@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragment_main">
+
+    <fragment
+        android:id="@+id/fragment_main"
+        android:name="com.example.macaronagaintoay.Fragment.MainFragment"
+        android:label="AdvertisionFirstFragment"
+        tools:layout="@layout/fragment_main"
+        >
+        <action
+            android:id="@+id/action_fragment_main_to_listCafeFragment"
+            app:destination="@id/listCafeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listCafeFragment"
+        android:name="com.example.macaronagaintoay.Fragment.ListCafeFragment"
+        android:label="ListCafeFragment"
+        tools:layout="@layout/activity_listcafe"
+        />
+</navigation>

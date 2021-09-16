@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/account"
+            android:title="광고신청"
+            />
+        <item
+            android:id="@+id/event"
+            android:title="이벤트"
+            />
+        <item
+            android:id="@+id/homecafe"
+            android:title="홈 카페 자랑하기"
+            />
+
+        <item
+            android:id="@+id/logout"
+            android:title="로그아웃"
+            />
+    </group>
+</menu>
