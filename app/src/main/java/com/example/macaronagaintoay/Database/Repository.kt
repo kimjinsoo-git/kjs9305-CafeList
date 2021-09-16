@@ -25,7 +25,9 @@ class Repository(mDatabase : AppDatabase) {
     private val CafeDao = mDatabase.cafeDao()
     private val DBVersionDao = mDatabase.DBVersionDao()
     val allSearch : LiveData<List<SearchEntity>> = SearchDao.getAlphabetizedSearch()
-    val allCafe : LiveData<List<CafeEntity>> = CafeDao.getAll()
+    val _allCafe : LiveData<List<CafeEntity>> = CafeDao.getAll()
+    val allCafe : LiveData<List<CafeEntity>>
+        get() = _allCafe
 
     val LastDbVersion : LiveData<DBVersionEntity> = DBVersionDao.getVersion()
 
