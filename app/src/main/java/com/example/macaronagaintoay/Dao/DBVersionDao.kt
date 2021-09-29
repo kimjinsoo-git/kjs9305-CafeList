@@ -12,7 +12,7 @@ interface DBVersionDao {
     fun getVersion() : LiveData<DBVersionEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)  //PrimaryKey가 겹치지않게 자동 올라가게함
-    suspend fun insert(DBVersionEntity : DBVersionEntity)
+    fun insert(DBVersionEntity: DBVersionEntity?)
 
     @Query("DELETE FROM version_table")
     suspend fun deleteAll()

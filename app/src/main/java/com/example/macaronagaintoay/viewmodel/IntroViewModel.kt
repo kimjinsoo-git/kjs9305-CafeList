@@ -21,6 +21,8 @@ import retrofit2.Response
 
 class IntroViewModel(application: Application) : AndroidViewModel(application) {
 
+    private var viewModelJop = Job()
+
     val repository : Repository = Repository(AppDatabase.getDatabase(application,viewModelScope))
 
     var LastDbVersion : LiveData<DBVersionEntity> = repository.LastDbVersion
@@ -28,6 +30,7 @@ class IntroViewModel(application: Application) : AndroidViewModel(application) {
     var vmDBversion : Int? = null
 
     var vmDBstate : LiveData<Boolean> = repository.DBversionState
+
 
 
     fun insert(DbVersion : DBVersionEntity) = viewModelScope.launch(Dispatchers.IO) {
@@ -45,14 +48,25 @@ class IntroViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun getDBversion(version : Int)=viewModelScope.launch(Dispatchers.IO){
-
+        Log.d("asdasd", "getDBversion")
         repository.getDBversion(version)
 
     }
 
+    fun getDBversion()=viewModelScope.launch(Dispatchers.IO){
+        Log.d("asdasd", "getDBversion")
+        repository.getDBversion()
+
+    }
+
+
+
     suspend fun getdb() : Int{
         return vmDBversion!!
     }
+
+
+
 
 }
 

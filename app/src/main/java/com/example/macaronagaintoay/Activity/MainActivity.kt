@@ -339,29 +339,25 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback{
 
 
 
-        naverMap!!.addOnCameraIdleListener(object : NaverMap.OnCameraIdleListener{
-            override fun onCameraIdle() {
-                freeActiveMarkers()
+        naverMap!!.addOnCameraIdleListener {
+            freeActiveMarkers()
 
-                val currentPosition = getCurrentPosition(naverMap!!)
-                try {
-                    Log.d("MVModel s","sdd")
-                    for (markerPosition in markersPosition!!) {
-                        if (!withinSightMarker(currentPosition!!, markerPosition!!)) continue
-                        val marker = Marker()
-                        marker.position = markerPosition!!
-                        marker.map = naverMap
-                        activeMarkers!!.add(marker)
-                    }
-
-                }catch (e : Exception){
-                    Log.d("MVModel e","ssdd")
-                    e.printStackTrace()
+            val currentPosition = getCurrentPosition(naverMap!!)
+            try {
+                Log.d("MVModel s", "sdd")
+                for (markerPosition in markersPosition!!) {
+                    if (!withinSightMarker(currentPosition!!, markerPosition!!)) continue
+                    val marker = Marker()
+                    marker.position = markerPosition!!
+                    marker.map = naverMap
+                    activeMarkers!!.add(marker)
                 }
+
+            } catch (e: Exception) {
+                Log.d("MVModel e", "ssdd")
+                e.printStackTrace()
             }
-
-        })
-
+        }
 
 
     }

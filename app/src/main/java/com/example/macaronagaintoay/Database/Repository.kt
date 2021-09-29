@@ -1,10 +1,8 @@
 package com.example.macaronagaintoay.Database
 
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
 import com.example.macaronagaintoay.Api.PostApi
 import com.example.macaronagaintoay.Api.Retrofit
 import com.example.macaronagaintoay.Entity.CafeEntity
@@ -12,7 +10,8 @@ import com.example.macaronagaintoay.Entity.DBVersionEntity
 import com.example.macaronagaintoay.Entity.SearchEntity
 import com.example.macaronagaintoay.dataclass.MyAllCafeList
 import com.example.macaronagaintoay.dataclass.MyDBversion
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import retrofit2.Call
@@ -98,11 +97,14 @@ class Repository(mDatabase : AppDatabase) {
                     Log.d("asdasd ip t", "DB버전이 크다")
 
                     GlobalScope.launch {
-                        DBVersionDao.dbversionupdate(version, data[0].version!!)
+
                         cafeDeleteAll()
                         getCafelist()
-                        _DBversionState.postValue(true)
+                        DBVersionDao.dbversionupdate(version, data[0].version!!)
+
                     }
+
+
                 }else if(version == data[0].version!!!!){
                     _DBversionState.postValue(true)
                     Log.d("asdasd ip t", "DB버전이 같다")
@@ -114,7 +116,33 @@ class Repository(mDatabase : AppDatabase) {
             }
 
             override fun onFailure(call: Call<MyDBversion>, t: Throwable) {
+                Log.d("asd failuer",  t.toString())
+            }
 
+        })
+
+    }
+
+    suspend fun getDBversion(){
+
+        getDBversion.getDBVersion().enqueue(object : Callback<MyDBversion>{
+            override fun onResponse(call: Call<MyDBversion>, response: Response<MyDBversion>) {
+                var data = response.body()!!.getDBversion()
+
+                Log.d("asd response", data[0].version.toString())
+
+
+                GlobalScope.launch {
+                    cafeDeleteAll()
+                    getCafelist()
+                    DBVersionDao.insert(DBVersionEntity(null, data[0].version!!))
+                }
+
+
+            }
+
+            override fun onFailure(call: Call<MyDBversion>, t: Throwable) {
+                Log.d("asd failuer",  t.toString())
             }
 
         })

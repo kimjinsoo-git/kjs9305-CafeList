@@ -9,6 +9,9 @@ import android.util.Log
 import androidx.lifecycle.Observer
 import com.example.macaronagaintoay.Entity.DBVersionEntity
 import com.example.macaronagaintoay.viewmodel.IntroViewModel
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
 import java.lang.Exception
 
 
@@ -21,27 +24,28 @@ class IntroActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_intro)
 
-        //viewModel.delete()
+
+
+
         viewModel.LastDbVersion.observe(this, Observer {
-            try {
-
-
+            if(it != null){
                 Log.d("asdasd t", it.versions.toString())
                 viewModel.getDBversion(it.versions!!)
-
-            }catch (e : Exception){
+            } else {
                 Log.d("asdasd r", "Exception")
-                viewModel.insert(DBVersionEntity(null, 1))
+                viewModel.getDBversion()
             }
         })
 
         viewModel.vmDBstate.observe(this, Observer {
-            if (it){
+
                 var intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 finish()
-            }
+
         })
+
+
 
     }
 

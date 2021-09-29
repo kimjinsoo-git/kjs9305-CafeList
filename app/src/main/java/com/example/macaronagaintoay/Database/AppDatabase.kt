@@ -62,6 +62,17 @@ abstract class AppDatabase : RoomDatabase(){  //RoomDatabase는 추상클래스�
         private val scope: CoroutineScope
     ) : RoomDatabase.Callback(){
 
+        override fun onCreate(db: SupportSQLiteDatabase) {
+            super.onCreate(db)
+            INSTANCE?.let {
+
+                    it.DBVersionDao().insert(DBVersionEntity(null,0))
+
+            }
+
+
+        }
+
         override fun onOpen(db: SupportSQLiteDatabase) {  //데이터 베이스가 열릴때마다 할 활동
             super.onOpen(db)
             INSTANCE?.let { database ->

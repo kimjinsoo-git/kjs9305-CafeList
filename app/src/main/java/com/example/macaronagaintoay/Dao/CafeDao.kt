@@ -15,7 +15,7 @@ interface CafeDao {
     suspend fun insert(CafeEntity : CafeEntity)
 
     @Query("DELETE FROM cafe_table")
-    suspend fun deleteAll()
+    fun deleteAll()
 
     @Query("SELECT * FROM cafe_table")
     fun getAll() : LiveData<List<CafeEntity>>
