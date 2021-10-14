@@ -25,8 +25,6 @@ class IntroActivity : AppCompatActivity() {
         setContentView(R.layout.activity_intro)
 
 
-
-
         viewModel.LastDbVersion.observe(this, Observer {
             if(it != null){
                 Log.d("asdasd t", it.versions.toString())
@@ -45,16 +43,6 @@ class IntroActivity : AppCompatActivity() {
 
         })
 
-
-
     }
-
-
-
-
-
-
-
-
 
 }

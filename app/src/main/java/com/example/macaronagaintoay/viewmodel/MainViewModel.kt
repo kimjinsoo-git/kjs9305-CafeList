@@ -24,6 +24,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application)  {
     val repository : Repository = Repository(AppDatabase.getDatabase(application,viewModelScope))
 
     var allCafe : LiveData<List<CafeEntity>> = repository.allCafe
+//    var CafeList : List<CafeEntity> = repository.CafeList
 
     var retrofit = Retrofit().getClient()
     var _getCafelist = retrofit!!.create(PostApi::class.java)

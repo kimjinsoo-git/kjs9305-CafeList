@@ -15,9 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
-import androidx.databinding.DataBindingUtil
 import androidx.databinding.DataBindingUtil.setContentView
-import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import com.example.macaronagaintoay.Fragment.MainFragment
@@ -36,6 +34,8 @@ import com.naver.maps.map.CameraPosition
 
 import com.naver.maps.map.NaverMap
 import com.naver.maps.map.overlay.OverlayImage
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import java.lang.Exception
 
 
@@ -99,7 +99,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback{
                 var intent = Intent(this, CafeDetailActivity::class.java)
                 startActivity(intent)
             } else if (id == R.id.homecafe) {
-                var intent = Intent(this, ListHomeCafeActivity::class.java)
+                var intent = Intent(this, ListCafeActivity::class.java)
                 startActivity(intent)
             } else if (id == R.id.logout) {
                 Toast.makeText(this, "$title: 로그아웃 시도중", Toast.LENGTH_SHORT).show()
@@ -113,7 +113,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback{
         }
 
         binding.listStrBtn.setOnClickListener {
-            var intent = Intent(this, ListHomeCafeActivity::class.java)
+            var intent = Intent(this, ListCafeActivity::class.java)
             startActivity(intent)
             overridePendingTransition(R.anim.fadein, R.anim.fadeout)
         }
@@ -127,8 +127,6 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback{
                     binding.viewModel?.updateLatLng(lanlng)
 
                     Log.d("값이뭐고", binding.viewModel?.latlng!!.value!!.lng.toString() + " / " +binding.viewModel?.latlng!!.value!!.lng)
-
-
 
                 }
             })
@@ -319,7 +317,6 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback{
 
 
 
-        markersPosition = Vector()
         binding.viewModel!!.allCafe.observe(this, Observer {
             for(i : Int in it.indices) {
 
@@ -332,10 +329,13 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback{
                 marker.icon = OverlayImage.fromResource(R.drawable.coffee);
                 marker.map = naverMap
 
-
-
             }
         })
+
+//        GlobalScope.launch {
+//            Log.d("cafelist", viewModel.CafeList.size.toString())
+//        }
+
 
 
 
@@ -345,13 +345,13 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback{
             val currentPosition = getCurrentPosition(naverMap!!)
             try {
                 Log.d("MVModel s", "sdd")
-                for (markerPosition in markersPosition!!) {
-                    if (!withinSightMarker(currentPosition!!, markerPosition!!)) continue
-                    val marker = Marker()
-                    marker.position = markerPosition!!
-                    marker.map = naverMap
-                    activeMarkers!!.add(marker)
-                }
+//                for (markerPosition in markersPosition!!) {
+//                    if (!withinSightMarker(currentPosition!!, markerPosition!!)) continue
+//                    val marker = Marker()
+//                    marker.position = markerPosition!!
+//                    marker.map = naverMap
+//                    activeMarkers!!.add(marker)
+//                }
 
             } catch (e: Exception) {
                 Log.d("MVModel e", "ssdd")

@@ -10,10 +10,8 @@ import com.example.macaronagaintoay.Entity.DBVersionEntity
 import com.example.macaronagaintoay.Entity.SearchEntity
 import com.example.macaronagaintoay.dataclass.MyAllCafeList
 import com.example.macaronagaintoay.dataclass.MyDBversion
-import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -27,6 +25,10 @@ class Repository(mDatabase : AppDatabase) {
     val _allCafe : LiveData<List<CafeEntity>> = CafeDao.getAll()
     val allCafe : LiveData<List<CafeEntity>>
         get() = _allCafe
+
+//    val CafeList : List<CafeEntity> = CafeDao.getCafeList()
+//    val  CafeList : List<CafeEntity>
+//        get() = _CafeList
 
     val LastDbVersion : LiveData<DBVersionEntity> = DBVersionDao.getVersion()
 
@@ -97,20 +99,19 @@ class Repository(mDatabase : AppDatabase) {
                     Log.d("asdasd ip t", "DB버전이 크다")
 
                     GlobalScope.launch {
-
                         cafeDeleteAll()
-                        getCafelist()
-                        DBVersionDao.dbversionupdate(version, data[0].version!!)
-
+                        getCafelist(data[0].version!!)
                     }
 
-
                 }else if(version == data[0].version!!!!){
+
                     _DBversionState.postValue(true)
                     Log.d("asdasd ip t", "DB버전이 같다")
 
                 } else{
+
                     Log.d("asdasd ip t", "DB버전이 작다")
+
                 }
 
             }
@@ -134,8 +135,8 @@ class Repository(mDatabase : AppDatabase) {
 
                 GlobalScope.launch {
                     cafeDeleteAll()
-                    getCafelist()
-                    DBVersionDao.insert(DBVersionEntity(null, data[0].version!!))
+                    getCafelist(data[0].version!!)
+
                 }
 
 
@@ -150,7 +151,7 @@ class Repository(mDatabase : AppDatabase) {
     }
 
 
-    suspend fun getCafelist() {
+    suspend fun getCafelist(version: Int) {
 
         getCafeList.getAllCafelist().enqueue(object: Callback<MyAllCafeList>{
             override fun onResponse(
@@ -162,13 +163,13 @@ class Repository(mDatabase : AppDatabase) {
 
                 var data = response.body()!!.getCafeList()
 
-                for(i in data.indices){
-                    GlobalScope.launch {
+                CoroutineScope(IO).launch {
+                    for(i in data.indices){
                         CafeInsert(CafeEntity(data[i].id,data[i].cafeName!!,data[i].category!!, data[i].newAddress!!, data[i].openTime!!, data[i].telNumber!!, data[i].city!!, data[i].oldAddress!!, data[i].lat.toString(), data[i].lng.toString()))
                     }
-
-
+                    DBVersionDao.insert(DBVersionEntity(null, version))
                 }
+
 
             }
 

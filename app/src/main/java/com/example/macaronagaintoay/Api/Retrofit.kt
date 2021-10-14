@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class Retrofit {
 
 
-    private final var BASE_URL="http://kjs9305.gonetis.com:9305/"
+    private var BASE_URL="http://kjs9305.gonetis.com:9305/"
 
     private var retrofit: Retrofit? = null
 

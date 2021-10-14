@@ -20,6 +20,9 @@ interface CafeDao {
     @Query("SELECT * FROM cafe_table")
     fun getAll() : LiveData<List<CafeEntity>>
 
+    @Query("SELECT * FROM cafe_table")
+    fun getCafeList() : List<CafeEntity>
+
 
 
 }

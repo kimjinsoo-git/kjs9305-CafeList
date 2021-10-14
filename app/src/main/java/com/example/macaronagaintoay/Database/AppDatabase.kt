@@ -66,7 +66,7 @@ abstract class AppDatabase : RoomDatabase(){  //RoomDatabase는 추상클래스�
             super.onCreate(db)
             INSTANCE?.let {
 
-                    it.DBVersionDao().insert(DBVersionEntity(null,0))
+                    //it.DBVersionDao().insert(DBVersionEntity(null,0))
 
             }
 
@@ -105,10 +105,5 @@ abstract class AppDatabase : RoomDatabase(){  //RoomDatabase는 추상클래스�
     open fun getDatabaseCreated():LiveData<Boolean>{  //생성된 데이터베이스를 가져오는 메소드
         return mIsDatabaseCreated
     }
-
-
-
-
-
 
 }
