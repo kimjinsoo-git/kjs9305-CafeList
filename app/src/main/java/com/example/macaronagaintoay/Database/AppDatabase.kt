@@ -10,9 +10,9 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.macaronagaintoay.Dao.CafeDao
 import com.example.macaronagaintoay.Dao.DBVersionDao
 import com.example.macaronagaintoay.Dao.SearchDao
-import com.example.macaronagaintoay.Entity.CafeEntity
-import com.example.macaronagaintoay.Entity.DBVersionEntity
-import com.example.macaronagaintoay.Entity.SearchEntity
+import com.example.macaronagaintoay.entity.CafeEntity
+import com.example.macaronagaintoay.entity.DBVersionEntity
+import com.example.macaronagaintoay.entity.SearchEntity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 

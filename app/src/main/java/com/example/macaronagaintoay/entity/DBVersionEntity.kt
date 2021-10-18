@@ -1,9 +1,8 @@
-package com.example.macaronagaintoay.Entity
+package com.example.macaronagaintoay.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.naver.maps.map.NaverMap
 
 @Entity(tableName = "version_table")
 class DBVersionEntity (

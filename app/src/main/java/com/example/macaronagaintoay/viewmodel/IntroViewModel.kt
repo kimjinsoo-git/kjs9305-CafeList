@@ -2,22 +2,14 @@ package com.example.macaronagaintoay.viewmodel
 
 import android.app.Application
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.example.macaronagaintoay.Api.PostApi
 import com.example.macaronagaintoay.Database.AppDatabase
 import com.example.macaronagaintoay.Database.Repository
-import com.example.macaronagaintoay.Entity.DBVersionEntity
+import com.example.macaronagaintoay.entity.DBVersionEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import com.example.macaronagaintoay.Api.Retrofit
-import com.example.macaronagaintoay.dataclass.MyDBversion
-import kotlinx.coroutines.Job
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class IntroViewModel(application: Application) : AndroidViewModel(application) {
 

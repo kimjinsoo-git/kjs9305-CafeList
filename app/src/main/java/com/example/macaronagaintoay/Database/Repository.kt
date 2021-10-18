@@ -5,9 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.macaronagaintoay.Api.PostApi
 import com.example.macaronagaintoay.Api.Retrofit
-import com.example.macaronagaintoay.Entity.CafeEntity
-import com.example.macaronagaintoay.Entity.DBVersionEntity
-import com.example.macaronagaintoay.Entity.SearchEntity
+import com.example.macaronagaintoay.entity.CafeEntity
+import com.example.macaronagaintoay.entity.DBVersionEntity
+import com.example.macaronagaintoay.entity.SearchEntity
 import com.example.macaronagaintoay.dataclass.MyAllCafeList
 import com.example.macaronagaintoay.dataclass.MyDBversion
 import kotlinx.coroutines.*

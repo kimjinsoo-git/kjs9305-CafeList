@@ -1,8 +1,6 @@
 package com.example.macaronagaintoay.viewmodel
 
 import android.app.Application
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.View
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
@@ -10,7 +8,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.macaronagaintoay.Database.AppDatabase
 import com.example.macaronagaintoay.Database.Repository
-import com.example.macaronagaintoay.Entity.SearchEntity
+import com.example.macaronagaintoay.entity.SearchEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

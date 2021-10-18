@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.macaronagaintoay.Entity.CafeEntity
+import com.example.macaronagaintoay.entity.CafeEntity
 import com.example.macaronagaintoay.R
 
 class ListHomeCafeListAdapter(context : Context) : RecyclerView.Adapter<ListHomeCafeListAdapter.ListHomeCafeListHolder>() {

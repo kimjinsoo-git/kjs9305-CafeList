@@ -2,8 +2,7 @@ package com.example.macaronagaintoay.Dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.example.macaronagaintoay.Entity.CafeEntity
-import com.example.macaronagaintoay.Entity.DBVersionEntity
+import com.example.macaronagaintoay.entity.DBVersionEntity
 
 @Dao
 interface DBVersionDao {

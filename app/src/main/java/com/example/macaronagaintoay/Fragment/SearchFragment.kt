@@ -15,7 +15,7 @@ import com.example.macaronagaintoay.Adapter.SearchListAdapter
 import com.example.macaronagaintoay.Dao.OnItemClick
 import com.example.macaronagaintoay.Decorator.HorizontalItemDecorator
 import com.example.macaronagaintoay.Decorator.VerticallItemDecorator
-import com.example.macaronagaintoay.Entity.SearchEntity
+import com.example.macaronagaintoay.entity.SearchEntity
 import com.example.macaronagaintoay.R
 import com.example.macaronagaintoay.databinding.FragmentSearchBinding
 import com.example.macaronagaintoay.viewmodel.SearchViewModel

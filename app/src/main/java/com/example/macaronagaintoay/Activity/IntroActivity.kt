@@ -7,12 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.macaronagaintoay.R
 import android.util.Log
 import androidx.lifecycle.Observer
-import com.example.macaronagaintoay.Entity.DBVersionEntity
 import com.example.macaronagaintoay.viewmodel.IntroViewModel
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.launch
-import java.lang.Exception
 
 
 class IntroActivity : AppCompatActivity() {

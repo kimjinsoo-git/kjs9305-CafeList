@@ -1,6 +1,6 @@
 package com.example.macaronagaintoay.Dao
 
-import com.example.macaronagaintoay.Entity.SearchEntity
+import com.example.macaronagaintoay.entity.SearchEntity
 
 interface OnItemClick {
 

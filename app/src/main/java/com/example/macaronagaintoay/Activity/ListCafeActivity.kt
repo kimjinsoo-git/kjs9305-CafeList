@@ -3,10 +3,10 @@ package com.example.macaronagaintoay.Activity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil.setContentView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.macaronagaintoay.Adapter.ListCafeAdapter
-import androidx.databinding.DataBindingUtil.setContentView
 import com.example.macaronagaintoay.R
 import com.example.macaronagaintoay.databinding.ActivityListcafeBinding
 import com.example.macaronagaintoay.viewmodel.ListCafeViewModel
@@ -20,7 +20,9 @@ class ListCafeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = setContentView(this, R.layout.activity_listcafe)
         binding.listCafe = viewModel
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = this@ListCafeActivity
+
+
 
         val layoutManager = LinearLayoutManager(this)
 
@@ -39,5 +41,6 @@ class ListCafeActivity : AppCompatActivity() {
         })
 
     }
+
 
 }

@@ -2,7 +2,7 @@ package com.example.macaronagaintoay.Dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.example.macaronagaintoay.Entity.SearchEntity
+import com.example.macaronagaintoay.entity.SearchEntity
 
 
 @Dao

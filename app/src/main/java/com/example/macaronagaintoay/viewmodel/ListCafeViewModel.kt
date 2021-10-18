@@ -6,7 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.macaronagaintoay.Database.AppDatabase
 import com.example.macaronagaintoay.Database.Repository
-import com.example.macaronagaintoay.Entity.CafeEntity
+import com.example.macaronagaintoay.entity.CafeEntity
 
 class ListCafeViewModel(application: Application) : AndroidViewModel(application) {
 

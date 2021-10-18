@@ -7,15 +7,10 @@ import com.example.macaronagaintoay.Api.PostApi
 import com.example.macaronagaintoay.Api.Retrofit
 import com.example.macaronagaintoay.Database.AppDatabase
 import com.example.macaronagaintoay.Database.Repository
-import com.example.macaronagaintoay.Entity.CafeEntity
-import com.example.macaronagaintoay.dataclass.AllCafelist
+import com.example.macaronagaintoay.entity.CafeEntity
 import com.example.macaronagaintoay.dataclass.Mainlatlng
-import com.example.macaronagaintoay.dataclass.MyAllCafeList
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class MainViewModel(application: Application) : AndroidViewModel(application)  {
 
